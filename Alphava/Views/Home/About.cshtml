@@ -1,0 +1,68 @@
+﻿@model StockData
+@{
+    ViewData["Title"] = "About";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<p>Use this area to provide additional information.</p>
+Information: @Model.MetaData.The1Information
+<br />
+Symbol: @Model.MetaData.The2Symbol
+<br />
+Last Refreshed: @Model.MetaData.The3LastRefreshed
+<br />
+Time Zone: @Model.MetaData.The4TimeZone
+<br />
+<div class="table-responsive">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Timestamp
+                </th>
+                <th>
+                    Volume
+                </th>
+                <th>
+                    Low
+                </th>
+                <th>
+                    High
+                </th>
+                <th>
+                    Open
+                </th>
+                <th>
+                    Close
+                </th>
+            </tr>
+        </thead>
+        @foreach (var m in @Model.WeeklyTimeSeries)
+        {
+            <tr>
+                <td>
+                    Date: @Html.Label(m.Key)
+                    
+                </td>
+                <td>
+                    @m.Value.The5Volume
+                </td>
+                <td>
+                    @m.Value.The3Low
+
+                </td>
+                <td>
+                    @m.Value.The2High
+
+                </td>
+                <td>
+                    @m.Value.The3Low
+                </td>
+                <td>
+                    @m.Value.The4Close
+                </td>
+            </tr>
+        }
+    </table>
+</div>
